@@ -7,7 +7,7 @@
 
 """
 
-This script mosaics several spatially contiguous MODIS sinusoidal tiles, 
+This script mosaics several spatially contiguous MODIS sinusoidal tiles,
 reprojects the mosaic onto a specified grid in GeoTIFF format.
 
 Usage:
@@ -67,21 +67,21 @@ logging.info("\n\n" + dt.datetime.now().strftime("%Y-%m-%d %I:%M:%S %p") +
         ": BEGINNING NEW PROCESSING BATCH")
 
 # Iterate by year
-for y in range(year_start, year_end):
+for y in range(year_start, year_end+1):
 
-	print('**** ' + str(y))
+	print('year: ' + str(y))
 
 	# Iterate through season of daily gridded MODIS acquisitions
 	for d in range(st,en+1):
 
 		# Pad julian day to three digits (MODIS filename format)
-		d =  str(d).zfill(3)	
+		d =  str(d).zfill(3)
 
 		for b in bands:
 
 			# Generate name of mosaiced output file
 			mosaic_outfile = product + '.' + 'A' + str(y) + d + '.' + version + '.' + b + '.' + out_label + '.tif'
-			
+
 			# Check if file already generated
 			if os.path.exists(mosaic_outfile) and overwrite == False:
 				logging.info(str(y) + d + ': ' + b + ': band TIF already exists, skipping')
@@ -93,6 +93,7 @@ for y in range(year_start, year_end):
 			for t in tiles:
 				fn = glob(input_path + product + '.A' + str(y) + d + '.' + t + '.' + version + '.*.hdf')
 
+
 				# Check that tile file is available
 				try:
 					fn = fn[0]
@@ -103,10 +104,10 @@ for y in range(year_start, year_end):
 				infile = 'HDF4_EOS:EOS_GRID:"' + fn + '":' + grid_name + ':' + b
 				outfile = product + '.' + 'A' + str(y) + d + '.' + t + '.' + b + '.vrt'
 				vrtfiles += ' ' + outfile
-				cmd = 'gdal_translate -of VRT ' + infile + ' ' + outfile 
-				
+				cmd = 'gdal_translate -of VRT ' + infile + ' ' + outfile
+
 				print('** CMD ** ' + cmd)
-				p = subprocess.Popen(cmd, stdout=subprocess.PIPE, 
+				p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
 					stderr=subprocess.PIPE,	shell=True)
 				(stdout,stderr) = p.communicate()
 				p.wait()
@@ -125,9 +126,9 @@ for y in range(year_start, year_end):
 
 			# Mosaic and warp for this day
 			cmd = 'gdalwarp -of GTiff ' + grid + ' ' + vrtfiles + ' ' + mosaic_outfile
-			
+
 			print('** CMD ** ' + cmd)
-			p = subprocess.Popen(cmd, stdout=subprocess.PIPE, 
+			p = subprocess.Popen(cmd, stdout=subprocess.PIPE,
 				stderr=subprocess.PIPE,	shell=True)
 			(stdout,stderr) = p.communicate()
 			p.wait()

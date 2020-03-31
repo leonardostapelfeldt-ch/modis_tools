@@ -86,7 +86,7 @@ y = y[::-1]
 y = y + (im.yres / 2)
 
 # Iterate by year
-for yr in range(year_start, year_end):
+for yr in range(year_start, year_end+1):
 
 	print(yr)
 
@@ -137,8 +137,10 @@ for yr in range(year_start, year_end):
 
 		# Convert to data array
 		# Get dtype from the last band image that was opened
-		da = xr.DataArray(data.astype(dtype), coords=[times, y, x], dims=['TIME', 'Y', 'X'],
-			encoding={'dtype':dtype})
+		da = xr.DataArray(data.astype(dtype), coords=[times, y, x], dims=['TIME', 'Y', 'X'])
+		#formerly ", encoding={'dtype':dtype})"; replaced with below as kwarg
+		# 'encoding' was removed from DataArray (starting from xarray v0.15.0)
+		da.encoding['dtype'] = dtype
 
 		#Add mask_and_scale parameters if specified
 		if s_f:
@@ -167,6 +169,3 @@ for yr in range(year_start, year_end):
 				os.remove(f)
 			except FileNotFoundError:
 				pass
-
-
-
