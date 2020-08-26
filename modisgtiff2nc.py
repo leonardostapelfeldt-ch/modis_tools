@@ -8,7 +8,7 @@
 Uses same parameter template file as stitch_warp_modis_l2.py
 
 Usage:
-	modis_margrid2netcdf.py <template_file>
+	modisgtiff2nc.py <template_file>
 
 Returns:
 	Nothing

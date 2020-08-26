@@ -54,6 +54,7 @@ out_label = config.get('Params','out_label')
 grid_name = config.get('Params','grid_name')
 cleanup = config.get('Params','cleanup')
 grid = config.get('Params','grid')
+resampling = config.get('Params','resampling')
 overwrite = config.getboolean('Params','overwrite')
 
 
@@ -74,10 +75,13 @@ for y in range(year_start, year_end+1):
 	# Iterate through season of daily gridded MODIS acquisitions
 	for d in range(st,en+1):
 
+		print('day: ' + str(d))
 		# Pad julian day to three digits (MODIS filename format)
 		d =  str(d).zfill(3)
 
 		for b in bands:
+
+			print('band: ' + str(b))
 
 			# Generate name of mosaiced output file
 			mosaic_outfile = product + '.' + 'A' + str(y) + d + '.' + version + '.' + b + '.' + out_label + '.tif'
@@ -91,8 +95,8 @@ for y in range(year_start, year_end+1):
 			vrtfiles = ''
 			count = 0
 			for t in tiles:
+				print('tile: ' + str(t))
 				fn = glob(input_path + product + '.A' + str(y) + d + '.' + t + '.' + version + '.*.hdf')
-
 
 				# Check that tile file is available
 				try:
@@ -125,7 +129,8 @@ for y in range(year_start, year_end+1):
 
 
 			# Mosaic and warp for this day
-			cmd = 'gdalwarp -of GTiff ' + grid + ' ' + vrtfiles + ' ' + mosaic_outfile
+			#cmd = 'gdalwarp -of GTiff ' + grid + ' ' + vrtfiles + ' ' + mosaic_outfile
+			cmd = 'gdalwarp -r ' + resampling + ' -of GTiff ' + grid + ' ' + vrtfiles + ' ' + mosaic_outfile
 
 			print('** CMD ** ' + cmd)
 			p = subprocess.Popen(cmd, stdout=subprocess.PIPE,

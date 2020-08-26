@@ -2,10 +2,10 @@
 year_start=2016
 year_end=2016
 ;Julian day to start on each year
-day_start=200
+day_start=204
 ;Julian day to end on each year
-day_end=202
-product=MOD10A1
+day_end=208
+product=MOD09GA
 ;Product version
 version=006
 ;Tiles to stitch, separated by comma
@@ -13,13 +13,13 @@ tiles=h16v02,h15v02
 input_path=/home/horstm/erc/sat_modis_raw/
 output_path=/home/horstm/erc/sat_modis_proc/
 out_label=reproj
-grid_name=MOD_Grid_Snow_500m
+grid_name=MODIS_Grid_500m_2D
 ;Bands to reproject, list multiple separated by comma
-bands=NDSI_Snow_Cover,Snow_Albedo_Daily_Tile
+bands=sur_refl_b01_1,sur_refl_b04_1,QC_500m_1
 cleanup=False
 overwrite=False
 ;Grid to project output files on, in GDAL syntax (is passed to gdalwarp)
-grid=-t_srs "+proj=sterea +lat_0=70.5 +lon_0=-40 +k=1 +datum=WGS84 +units=m" -te -586678 -949047 -253932 70448 -tr 500 500
+grid=-t_srs "EPSG:3413" -te -333000 -3335000 525000 -2241000 -tr 500 500
 ;Resampling method, use only GDAL keywords (see https://gdal.org/programs/gdalwarp.html)
 resampling=near
 ;Scale factors and missing values, comma separated, one for each band (provide None for bands that do not need these parameters set)
