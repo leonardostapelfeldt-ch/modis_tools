@@ -11,8 +11,8 @@ product=MOD10A1
 version=006
 ;Tiles to stitch, separated by comma
 tiles=h16v02,h15v02
-input_path=/home/horstm/erc/sat_modis_raw/
-output_path=/home/horstm/erc/sat_modis_proc_l1_v2/
+input_path=E:/MODIS/sat_modis_raw/
+output_path=E:/MODIS/sat_modis_proc_l1_v2/
 out_label=r3413
 grid_name=MOD_Grid_Snow_500m
 ;Bands to reproject, list multiple separated by comma
