@@ -1,26 +1,26 @@
 [Params]
-; this template stitches MODIS coverage for the south-west (for code development and testing)
-year_start=2000
-year_end=2020
+; this template stitches Greenland-wide MODIS coverage
+year_start=2016
+year_end=2016
 ;Julian day to start on each year
-day_start=120
+day_start=198
 ;Julian day to end on each year
-day_end=280
+day_end=215
 product=MOD10A1
 ;Product version
 version=006
 ;Tiles to stitch, separated by comma
 tiles=h16v02,h15v02
-input_path=/home/horstm/erc/sat_modis_raw/
-output_path=/home/horstm/erc/sat_modis_proc_l1_v2/
-out_label=r3413
+input_path=E:/MODIS/sat_modis_raw/
+output_path=E:/MODIS/sat_modis_proc_l1SW/
+out_label=reproj_EPSG3413_GL
 grid_name=MOD_Grid_Snow_500m
 ;Bands to reproject, list multiple separated by comma
-bands=Snow_Albedo_Daily_Tile
+bands=NDSI_Snow_Cover,Snow_Albedo_Daily_Tile
 cleanup=False
 overwrite=False
 ;Grid to project output files on, in GDAL syntax (is passed to gdalwarp)
-grid=-t_srs "EPSG:3413" -te -318000 -2741000 3000 -2320000 -tr 500 500
+grid=-t_srs "EPSG:3413" -tr 500 500
 ;Resampling method, use only GDAL keywords (see https://gdal.org/programs/gdalwarp.html)
 resampling=near
 ;Scale factors and missing values, comma separated, one for each band (provide None for bands that do not need these parameters set)
