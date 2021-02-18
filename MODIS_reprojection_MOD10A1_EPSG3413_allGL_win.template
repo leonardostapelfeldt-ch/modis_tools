@@ -4,14 +4,14 @@ year_end=2016
 ;Julian day to start on each year
 day_start=198
 ;Julian day to end on each year
-day_end=215
+day_end=201
 product=MOD10A1
 ;Product version
 version=006
 ;Tiles to stitch, separated by comma
 tiles=h16v02,h15v02,h16v01
-input_path=F:/MODIS/sat_modis_raw/
-output_path=F:/MODIS/sat_modis_test/
+input_path=D:/MODIS/sat_modis_raw/
+output_path=D:/MODIS/sat_modis_test/
 out_label=_r3413_GL
 grid_name=MOD_Grid_Snow_500m
 ;Bands to reproject, list multiple separated by comma

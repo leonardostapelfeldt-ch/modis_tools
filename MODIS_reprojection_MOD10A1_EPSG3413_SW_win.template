@@ -1,6 +1,6 @@
 [Params]
 year_start=2000
-year_end=2019
+year_end=2020
 ;Julian day to start on each year
 day_start=120
 ;Julian day to end on each year
@@ -9,7 +9,7 @@ product=MOD10A1
 ;Product version
 version=006
 ;Tiles to stitch, separated by comma
-tiles=h16v02,h15v02,h17v01
+tiles=h16v02,h15v02,h16v01
 input_path=D:/MODIS/sat_modis_raw/
 output_path=D:/MODIS/sat_modis_proc_SW_l1/
 out_label=r3413
