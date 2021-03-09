@@ -1,0 +1,28 @@
+[Params]
+; this template stitches MODIS MOD13Q1 TERRA
+year_start=2015
+year_end=2018
+;Julian day to start on each year
+day_start=150
+;Julian day to end on each year
+day_end=280
+product=MOD13Q1
+;Product version
+version=006
+;Tiles to stitch, separated by comma
+tiles=h18v04
+input_path=D:/MODIS/sat_modis_raw/
+output_path=D:/MODIS/sat_modis_proc_l1_NDVI_jura/
+out_label=r32632_jura
+grid_name=MODIS_Grid_16DAY_250m_500m_VI
+;Bands to reproject, list multiple separated by comma
+bands="250m 16 days NDVI"
+cleanup=False
+overwrite=False
+;Grid to project output files on, in GDAL syntax (is passed to gdalwarp)
+grid=-t_srs "EPSG:32632" -te 369400 5220500 393400 5247600 -tr 250 250
+;Resampling method, use only GDAL keywords (see https://gdal.org/programs/gdalwarp.html)
+resampling=near
+;Scale factors and missing values, comma separated, one for each band (provide None for bands that do not need these parameters set)
+scale_factor=0.0001
+missing_value=-3000
