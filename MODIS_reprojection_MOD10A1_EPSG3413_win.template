@@ -1,7 +1,7 @@
 [Params]
 ; this template stitches MODIS coverage for the south-west (for code development and testing)
-year_start=2000
-year_end=2020
+year_start=2012
+year_end=2012
 ;Julian day to start on each year
 day_start=120
 ;Julian day to end on each year
@@ -11,8 +11,8 @@ product=MOD10A1
 version=006
 ;Tiles to stitch, separated by comma
 tiles=h16v02,h15v02
-input_path=E:/MODIS/sat_modis_raw/
-output_path=E:/MODIS/sat_modis_proc_l1_v2/
+input_path=D:/MODIS/sat_modis_raw/
+output_path=D:/MODIS/sat_modis_proc_l1_test2/
 out_label=r3413
 grid_name=MOD_Grid_Snow_500m
 ;Bands to reproject, list multiple separated by comma
