@@ -4,7 +4,7 @@ year_end=2012
 ;Julian day to start on each year
 day_start=100
 ;Julian day to end on each year
-day_end=250
+day_end=280
 product=MOD09GA
 ;Product version
 version=006
