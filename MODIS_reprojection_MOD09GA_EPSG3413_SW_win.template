@@ -1,0 +1,27 @@
+[Params]
+year_start=2000
+year_end=2020
+;Julian day to start on each year
+day_start=100
+;Julian day to end on each year
+day_end=280
+product=MOD09GA
+;Product version
+version=006
+;Tiles to stitch, separated by comma
+tiles=h15v02,h16v01,h16v02
+input_path=D:/MODIS/sat_modis_raw/
+output_path=D:/MODIS/sat_modis_proc_l1_NDWI/
+out_label=r3413
+grid_name=MODIS_Grid_500m_2D
+;Bands to reproject, list multiple separated by comma
+bands=sur_refl_b01_1,sur_refl_b02_1,sur_refl_b03_1,sur_refl_b04_1,sur_refl_b05_1,sur_refl_b06_1,sur_refl_b07_1,QC_500m_1
+cleanup=True
+overwrite=False
+;Grid to project output files on, in GDAL syntax (is passed to gdalwarp)
+grid=-t_srs "EPSG:3413" -te -278000 -3125000 5000 -2050000 -tr 500 500
+;Resampling method, use only GDAL keywords (see https://gdal.org/programs/gdalwarp.html)
+resampling=near
+;Scale factors and missing values, comma separated, one for each band (provide None for bands that do not need these parameters set)
+scale_factor=0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,0.0001,None
+missing_value=-28672,-28672,-28672,-28672,-28672,-28672,-28672,787410671
