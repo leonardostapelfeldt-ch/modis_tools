@@ -1,6 +1,6 @@
 [Params]
 year_start=2000
-year_end=2020
+year_end=2021
 ;Julian day to start on each year
 day_start=120
 ;Julian day to end on each year
@@ -10,13 +10,13 @@ product=MOD10A1
 version=006
 ;Tiles to stitch, separated by comma
 tiles=h16v02,h15v02,h16v01
-input_path=D:/MODIS/sat_modis_raw/
-output_path=D:/MODIS/sat_modis_proc_SW_l1/
+input_path=N:/MODIS/sat_modis_raw/MOD10A1/
+output_path=N:/MODIS/sat_modis_proc_SW_l1/
 out_label=r3413
 grid_name=MOD_Grid_Snow_500m
 ;Bands to reproject, list multiple separated by comma
 bands=Snow_Albedo_Daily_Tile
-cleanup=False
+cleanup=True
 overwrite=False
 ;Grid to project output files on, in GDAL syntax (is passed to gdalwarp)
 grid=-t_srs "EPSG:3413" -te -278000 -3125000 5000 -2050000 -tr 500 500

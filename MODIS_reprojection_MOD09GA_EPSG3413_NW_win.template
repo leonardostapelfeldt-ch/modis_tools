@@ -10,8 +10,8 @@ product=MOD09GA
 version=006
 ;Tiles to stitch, separated by comma
 tiles=h15v02,h16v01,h16v02
-input_path=D:/MODIS/sat_modis_raw/
-output_path=D:/MODIS/sat_modis_proc_l1_NDWI/
+input_path=N:/MODIS/sat_modis_raw/
+output_path=N:/MODIS/sat_modis_proc_l1_NDWI/
 out_label=r3413
 grid_name=MODIS_Grid_500m_2D
 ;Bands to reproject, list multiple separated by comma
